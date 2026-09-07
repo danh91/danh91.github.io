@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daniel Kobina</title>
-<meta name="description" content="I build the layer underneath shipping. Founder of Karrio, open-source shipping infrastructure, now built inside JTL-Software.">
+<meta name="description" content="Platform and integration architecture. I build systems that make messy third-party APIs programmable. Founder of Karrio, open-source shipping infrastructure, now built inside JTL-Software.">
 <link rel="canonical" href="https://danielk.xyz/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://danielk.xyz/">
 <meta property="og:title" content="Daniel Kobina">
-<meta property="og:description" content="I build the layer underneath shipping. Founder of Karrio, open-source shipping infrastructure, now built inside JTL-Software.">
+<meta property="og:description" content="Platform and integration architecture. I build systems that make messy third-party APIs programmable. Founder of Karrio, open-source shipping infrastructure, now built inside JTL-Software.">
 <meta property="og:image" content="https://github.com/danh91.png?size=460">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@DanHK91">
@@ -25,26 +25,26 @@
 :root {
   --paper:    #F3F4F1;
   --surface:  #FBFBFA;
+  --sunken:   #ECEEEA;
   --ink:      #12141A;
   --ink-soft: #4A5058;
   --ink-dim:  #868D96;
   --rule:     #D9DCD8;
   --rule-firm:#B7BCB8;
   --accent:   #1338E6;
-  --accent-w: #E4E8FD;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --paper:    #0C0E12;
     --surface:  #14171D;
+    --sunken:   #11141A;
     --ink:      #E9ECEF;
     --ink-soft: #A0A7B0;
     --ink-dim:  #6C737C;
     --rule:     #232830;
     --rule-firm:#363D47;
     --accent:   #7C95FF;
-    --accent-w: #171E38;
   }
 }
 
@@ -133,6 +133,14 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-
   margin-top: 1px;
 }
 
+nav { position: relative; }
+nav::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px; bottom: 10px;
+  width: 1px;
+  background: var(--rule);
+}
 nav ul { list-style: none; margin: 0; padding: 0; }
 nav li { position: relative; }
 nav a {
@@ -153,21 +161,6 @@ nav a::before {
 }
 nav a:hover { color: var(--ink); }
 nav a:hover::before { width: 16px; background: var(--accent); }
-nav ul::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 1px;
-  background: var(--rule);
-}
-nav { position: relative; }
-nav::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 10px; bottom: 10px;
-  width: 1px;
-  background: var(--rule);
-}
 
 .rail .foot { margin-top: auto; color: var(--ink-dim); }
 
@@ -175,18 +168,18 @@ nav::before {
 
 main { padding: 56px 0 140px; min-width: 0; }
 
-section { padding: 0 0 76px; scroll-margin-top: 40px; }
+section { padding: 0 0 80px; scroll-margin-top: 40px; }
 
 .eyebrow { color: var(--ink-dim); display: block; margin-bottom: 20px; }
 
 h1 {
   font-family: "Familjen Grotesk", system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(2.35rem, 5.4vw, 3.5rem);
-  line-height: 1.04;
+  font-size: clamp(2.3rem, 5.2vw, 3.4rem);
+  line-height: 1.05;
   letter-spacing: -.032em;
   margin: 0 0 26px;
-  max-width: 17ch;
+  max-width: 19ch;
   text-wrap: balance;
 }
 
@@ -198,8 +191,8 @@ h2 {
   margin: 0 0 18px;
 }
 
-p { margin: 0 0 1.05em; max-width: 62ch; }
-p.lead { font-size: 1.13rem; color: var(--ink-soft); max-width: 56ch; }
+p { margin: 0 0 1.05em; max-width: 64ch; }
+p.lead { font-size: 1.13rem; color: var(--ink-soft); max-width: 58ch; }
 main section > p:last-child { margin-bottom: 0; }
 
 .hero { padding-top: 8px; }
@@ -220,49 +213,82 @@ main section > p:last-child { margin-bottom: 0; }
   letter-spacing: .06em;
 }
 
-/* karrio card */
+/* ---------- capabilities ---------- */
 
-.card {
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 26px 28px;
-  max-width: 62ch;
+.caps { display: grid; gap: 0; max-width: 68ch; }
+.caps > div {
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
 }
-.card h3 {
+.caps > div:last-child { border-bottom: 1px solid var(--rule); }
+.caps h3 {
   font-family: "Familjen Grotesk", system-ui, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.02rem;
   font-weight: 600;
-  letter-spacing: -.015em;
-  margin: 0 0 4px;
+  letter-spacing: -.012em;
+  margin: 0 0 8px;
 }
-.card .sub { color: var(--ink-dim); font-size: .84rem; margin-bottom: 16px; }
-.card p { font-size: .96rem; }
-.card .links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: .9rem; }
-.card img.badge { height: 20px; vertical-align: middle; }
+.caps p { margin: 0; font-size: .97rem; color: var(--ink-soft); }
 
-.stack {
+.stackline {
+  margin-top: 26px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px 10px;
-  margin-top: 18px;
   color: var(--ink-dim);
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 11.5px;
+  max-width: 68ch;
 }
-.stack i { font-style: normal; }
-.stack i:not(:last-child)::after { content: " \00B7"; color: var(--rule-firm); }
+.stackline i { font-style: normal; }
+.stackline i:not(:last-child)::after { content: " \00B7"; color: var(--rule-firm); }
 
-/* work list */
+/* ---------- case study ---------- */
 
-.work { list-style: none; margin: 0; padding: 0; max-width: 66ch; }
+.case {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 30px 32px;
+  max-width: 68ch;
+}
+.case > h3 {
+  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.022em;
+  margin: 0 0 4px;
+}
+.case .sub { color: var(--ink-dim); font-size: .86rem; margin: 0 0 26px; }
+
+.beat { display: grid; grid-template-columns: 92px 1fr; gap: 0 24px; padding: 18px 0; border-top: 1px solid var(--rule); }
+.beat:first-of-type { border-top: none; padding-top: 0; }
+.beat > span {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding-top: 5px;
+}
+.beat p { margin: 0; font-size: .96rem; max-width: 56ch; }
+
+.case .links {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--rule);
+  font-size: .9rem;
+}
+.case img.badge { height: 20px; vertical-align: middle; display: block; }
+
+/* ---------- work list ---------- */
+
+.work { list-style: none; margin: 0; padding: 0; max-width: 68ch; }
 .work li {
   display: grid;
   grid-template-columns: 132px 1fr;
   gap: 4px 24px;
-  padding: 20px 0;
+  padding: 24px 0;
   border-top: 1px solid var(--rule);
-  align-items: baseline;
 }
 .work li:last-child { border-bottom: 1px solid var(--rule); }
 .work .when {
@@ -271,19 +297,32 @@ main section > p:last-child { margin-bottom: 0; }
   font-size: 11.5px;
   letter-spacing: .04em;
   font-variant-numeric: tabular-nums;
-  padding-top: 4px;
+  padding-top: 5px;
 }
-.work .role { font-weight: 500; }
+.work .role { font-weight: 500; margin-bottom: 6px; }
 .work .role em { font-style: normal; color: var(--ink-dim); font-weight: 400; }
-.work .note { color: var(--ink-soft); font-size: .92rem; margin-top: 3px; }
+.work .note { color: var(--ink-soft); font-size: .95rem; }
+.work .note p { margin: 0 0 .7em; max-width: 58ch; }
+.work .note p:last-child { margin-bottom: 0; }
 
-/* contact */
+/* ---------- writing ---------- */
+
+.empty {
+  border: 1px dashed var(--rule-firm);
+  border-radius: 4px;
+  padding: 24px 26px;
+  max-width: 64ch;
+  background: var(--sunken);
+}
+.empty p { margin: 0; color: var(--ink-soft); font-size: .96rem; }
+
+/* ---------- contact ---------- */
 
 .links-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 2px 28px;
-  max-width: 62ch;
+  max-width: 64ch;
   margin-top: 4px;
 }
 .links-grid a {
@@ -326,9 +365,12 @@ footer {
   }
   .rail nav, .rail .foot { display: none; }
   main { padding: 40px 0 90px; }
-  section { padding-bottom: 58px; }
-  .work li { grid-template-columns: 1fr; gap: 3px; }
+  section { padding-bottom: 60px; }
+  .work li { grid-template-columns: 1fr; gap: 6px; }
   .work .when { padding-top: 0; }
+  .beat { grid-template-columns: 1fr; gap: 6px; }
+  .beat > span { padding-top: 0; }
+  .case { padding: 24px 20px; }
 }
 </style>
 </head>
@@ -350,8 +392,10 @@ footer {
     <nav aria-label="Sections">
       <ul>
         <li><a href="#now">Now</a></li>
+        <li><a href="#work-i-do">What I do</a></li>
         <li><a href="#karrio">Karrio</a></li>
         <li><a href="#work">Work</a></li>
+        <li><a href="#writing">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -362,10 +406,10 @@ footer {
   <main>
 
     <section class="hero">
-      <h1>I build the layer underneath shipping.</h1>
-      <p class="lead">Carrier APIs, rating, labels, customs, tracking. The part nobody sees until it breaks, and the part every company that ships a physical product ends up rebuilding from scratch.</p>
+      <h1>I build platforms that make messy systems programmable.</h1>
+      <p class="lead">Dozens of third-party APIs that agree on nothing, behind one interface that holds up in production. I have spent eight years doing that to carrier and logistics systems, which are the worst version of the problem I have found.</p>
       <div class="tags">
-        <span>Python</span><span>TypeScript</span><span>Django</span><span>Docker</span><span>Postgres</span><span>Open source</span>
+        <span>Platform architecture</span><span>API design</span><span>Python</span><span>TypeScript</span><span>Django</span><span>Docker</span><span>Open source</span>
       </div>
     </section>
 
@@ -374,27 +418,67 @@ footer {
       <h2>Product engineer at JTL-Software, leading Karrio inside it.</h2>
       <p>I founded Karrio in 2020 on one idea: carrier integration is infrastructure, and infrastructure should be open. In 2025 Karrio and I joined JTL-Software, where it runs as the shipping layer inside an established European e-commerce software business.</p>
       <p>Before that I was founding engineer and then CTO at Teleship, building cross-border shipping architecture, and a decade of production systems before that.</p>
-      <p>What I care about now: logistics is about to be run by software rather than by people clicking through dashboards. Carrier selection, rate negotiation, exception handling, customs decisions. All of it becomes something a machine can address directly. Most of this industry is still shipping dashboards.</p>
+      <p>What I care about now: logistics is about to be run by software rather than by people clicking through dashboards. Carrier selection, rate negotiation, exception handling, customs decisions. All of it becomes something a machine can address directly. The systems that matter will be the ones with clean, programmable surfaces. Most of this industry is still shipping dashboards.</p>
+    </section>
+
+    <section id="work-i-do">
+      <span class="eyebrow mono">What I do</span>
+      <div class="caps">
+        <div>
+          <h3>Integration architecture</h3>
+          <p>Third-party systems are hostile by default. Different auth, different error semantics, different ideas of what a valid address is, and documentation describing a version nobody shipped. The work is a data model that survives all of them and an adapter layer that makes the next one cheap. In Karrio that took a new carrier from a quarter of engineering down to days.</p>
+          <p style="margin-top:.7em">Karrio is the third time I have built this kind of layer. Before it, multi-vendor instrument APIs for hardness testing at Clemex, then a vendor-agnostic quantum computing cloud at Resonance. Different industries, same problem.</p>
+        </div>
+        <div>
+          <h3>Platform design</h3>
+          <p>Multi-tenancy, rate limiting, orchestration, and one core with REST and GraphQL surfaces over it rather than two codebases pretending to agree. The requirement I hold everything to is that a new market, partner or carrier should be a configuration change rather than a rewrite.</p>
+        </div>
+        <div>
+          <h3>Open source as a business</h3>
+          <p>I ran Karrio as open core. The hard part was never the code, it was where to draw the line. Draw it wrong and the open edition is a crippled demo nobody trusts, or the commercial tier has nothing anyone will pay for. Getting that boundary right is most of what makes open core work.</p>
+        </div>
+        <div>
+          <h3>Leading the work</h3>
+          <p>Founding engineer, then CTO, then founder. Hiring, setting the technical bar, and owning the decisions about what a team will deliberately not build. Most of what I know about architecture I learned from that last one.</p>
+        </div>
+      </div>
+      <div class="stackline">
+        <i>Python</i><i>Django</i><i>TypeScript</i><i>NestJS</i><i>PostgreSQL</i><i>Docker</i><i>GraphQL</i><i>REST</i><i>AWS</i>
+      </div>
     </section>
 
     <section id="karrio">
-      <span class="eyebrow mono">The main thing</span>
-      <div class="card">
+      <span class="eyebrow mono">Current focus</span>
+      <div class="case">
         <h3>Karrio</h3>
-        <p class="sub">Open-source shipping platform, API-first, self-hostable</p>
-        <p>Rating, label generation, tracking, customs documentation and fulfillment orchestration behind one interface. A plugin SDK lets a team add a carrier without waiting on somebody's roadmap. UPS, DHL, FedEx, USPS, Canada Post, Purolator and a growing ecosystem beyond them.</p>
-        <p>Started as a side project in 2020. Became production infrastructure for platforms, retailers and logistics teams, with a contributor community extending it into markets I will never see.</p>
-        <div class="stack">
-          <i>Python</i><i>Django</i><i>GraphQL</i><i>REST</i><i>Docker</i><i>LGPL + commercial</i>
+        <p class="sub">Open-source shipping platform. API-first, self-hostable, open core.</p>
+
+        <div class="beat">
+          <span>Problem</span>
+          <p>Every company that ships a physical product rebuilds the same carrier integration layer. UPS, DHL, FedEx, USPS, Canada Post and the regional carriers each expose a different API, a different rate model, a different label format and a different idea of what a valid address is. Teams lose months to it, then maintain it forever, and none of that work differentiates them.</p>
         </div>
+
+        <div class="beat">
+          <span>Decision</span>
+          <p>One carrier-agnostic data model, with every carrier pushed behind a plugin SDK rather than into a switch statement that grows without end. Rating, labels, tracking, customs documents and fulfillment orchestration sit behind a single interface, with REST and GraphQL generated over the same core. Adding a carrier became something a team outside the project could do themselves.</p>
+        </div>
+
+        <div class="beat">
+          <span>Boundary</span>
+          <p>The community edition is LGPL and useful on its own, self-hostable with no vendor in the path. The commercial tier covers multi-tenancy, rate limiting and orchestration: what an operator needs at scale and a single developer does not. That line is the business, and it is the decision I spent the most time on.</p>
+        </div>
+
+        <div class="beat">
+          <span>Outcome</span>
+          <p>Production infrastructure for platforms, retailers and logistics teams, with a contributor community extending it into markets I will never see. In 2025 Karrio and I joined JTL-Software, where it runs as the shipping layer inside an established European e-commerce software business.</p>
+        </div>
+
         <div class="links">
-          <a href="https://github.com/karrioapi/karrio">Source on GitHub</a>
+          <a href="https://github.com/karrioapi/karrio">Source</a>
           <a href="https://www.karrio.io/">karrio.io</a>
           <a href="https://docs.karrio.io/">Docs</a>
-        </div>
-        <p style="margin-top:16px;margin-bottom:0">
           <a href="https://github.com/karrioapi/karrio"><img class="badge" src="https://img.shields.io/github/stars/karrioapi/karrio?style=flat&label=stars&color=1338E6" alt="GitHub stars for karrioapi/karrio" loading="lazy"></a>
-        </p>
+        </div>
       </div>
     </section>
 
@@ -405,45 +489,72 @@ footer {
           <span class="when">2025 &ndash; now</span>
           <div>
             <div class="role">Product Engineer, Shipping Platform <em>&middot; JTL-Software</em></div>
-            <div class="note">Lead Karrio's direction inside JTL. Carrier network, international and customs flows, and the API surface merchants and partners build against.</div>
+            <div class="note">
+              <p>I lead Karrio's direction inside JTL: roadmap, architecture, and the question of how an open-source project fits a commercial ERP and fulfillment stack.</p>
+              <p>Two operating models that rarely mix. An open-source project has an external contributor community and its own norms. An enterprise software business has a release cadence and support obligations. Making both work at once is most of the job.</p>
+            </div>
           </div>
         </li>
         <li>
           <span class="when">2020 &ndash; now</span>
           <div>
             <div class="role">Founder &amp; CEO <em>&middot; Karrio</em></div>
-            <div class="note">Built the platform, the plugin architecture and the open-core business around it.</div>
+            <div class="note">
+              <p>Built the platform, the plugin architecture and the open-core business around it. Full write-up above.</p>
+            </div>
           </div>
         </li>
         <li>
           <span class="when">2024 &ndash; 2026</span>
           <div>
             <div class="role">Founding Engineer, then CTO <em>&middot; Teleship</em></div>
-            <div class="note">First engineer on a cross-border shipping platform. Owned the architecture, the engineering standards and the team.</div>
+            <div class="note">
+              <p>First engineer on a cross-border shipping platform, then CTO. Owned the platform architecture, the engineering standards behind it, and the technical bar we hired against.</p>
+              <p>Cross-border logistics fails on edge cases, so the architecture has to make edge cases cheap. That drove most of what I built and all of what I refused to build. I carried the carrier integration patterns proven in Karrio straight into production there, which cut most of the usual discovery cycle on customs, rating and multi-carrier behaviour.</p>
+            </div>
           </div>
         </li>
         <li>
           <span class="when">2022 &ndash; 2024</span>
           <div>
             <div class="role">Full Stack Developer <em>&middot; Resonance</em></div>
-            <div class="note">Market intelligence platforms across quantum, space, climate and AI verticals.</div>
+            <div class="note">
+              <p>Owned backend and infrastructure for market intelligence platforms across quantum computing, space, climate and AI, and built prototypes for adjacent businesses the company was exploring.</p>
+              <p>Two of those reached MVP: an early system for AI-generated, industry-specific news summaries, and a vendor-agnostic quantum computing cloud platform. Both were built while GPT-3 and GPT-4 were still new.</p>
+              <p>Migrated the platform onto Amazon EKS, which took fetch and search throughput across quantum industry data up by roughly 100x.</p>
+            </div>
           </div>
         </li>
         <li>
           <span class="when">2018 &ndash; 2020</span>
           <div>
             <div class="role">Full Stack Developer, then DevOps <em>&middot; Clemex Technologies</em></div>
-            <div class="note">Scientific imaging and analysis software.</div>
+            <div class="note">
+              <p>Python backend, plus the CI/CD infrastructure and release management underneath it.</p>
+              <p>Sat between the engineering and ML teams and built the integration layer that bundled trained models into releases, with TensorFlow models loaded at runtime for automated hardness testing.</p>
+              <p>Designed the hardness testing APIs to speak to instruments from multiple vendors rather than to one. The first time I built an abstraction over hardware nobody had agreed on a standard for.</p>
+            </div>
           </div>
         </li>
         <li>
           <span class="when">2014 &ndash; 2018</span>
           <div>
             <div class="role">Software Developer <em>&middot; VuWall</em></div>
-            <div class="note">Video wall control systems and the software around them.</div>
+            <div class="note">
+              <p>Four years across the stack on video wall control systems, ending up as the frontend lead for the team.</p>
+              <p>Built the component library from scratch, and the first frontend application for VuWall TRx.</p>
+            </div>
           </div>
         </li>
       </ul>
+    </section>
+
+    <section id="writing">
+      <span class="eyebrow mono">Writing</span>
+      <h2>Notes</h2>
+      <div class="empty">
+        <p>Nothing published here yet. What I intend to write about: carrier integration as an architectural problem, where to draw the line in an open-core business, and what happens to logistics when software is the operator rather than the interface.</p>
+      </div>
     </section>
 
     <section id="contact">
