@@ -12,8 +12,6 @@
 <meta property="og:title" content="Daniel Kobina">
 <meta property="og:description" content="Platform and integration architecture. I build systems that make messy third-party APIs programmable. Founder of Karrio, open-source shipping infrastructure, now built inside JTL-Software.">
 <meta property="og:image" content="https://github.com/danh91.png?size=460">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:creator" content="@DanHK91">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231338E6'/%3E%3Cpath d='M28 68V32h16c11 0 18 7 18 18s-7 18-18 18H28z' fill='%23fff'/%3E%3C/svg%3E">
 
@@ -416,9 +414,7 @@ footer {
     <section id="now">
       <span class="eyebrow mono">Now</span>
       <h2>Product engineer at JTL-Software, leading Karrio inside it.</h2>
-      <p>I founded Karrio in 2020 on one idea: carrier integration is infrastructure, and infrastructure should be open. In 2025 Karrio and I joined JTL-Software, where it runs as the shipping layer inside an established European e-commerce software business.</p>
-      <p>Before that I was founding engineer and then CTO at Teleship, building cross-border shipping architecture, and a decade of production systems before that.</p>
-      <p>What I care about now: logistics is about to be run by software rather than by people clicking through dashboards. Carrier selection, rate negotiation, exception handling, customs decisions. All of it becomes something a machine can address directly. The systems that matter will be the ones with clean, programmable surfaces. Most of this industry is still shipping dashboards.</p>
+      <p>Logistics is about to be run by software rather than by people clicking through dashboards. Carrier selection, rate negotiation, exception handling, customs decisions. All of it becomes something a machine can address directly. The systems that matter will be the ones with clean, programmable surfaces. Most of this industry is still shipping dashboards.</p>
     </section>
 
     <section id="work-i-do">
@@ -427,19 +423,19 @@ footer {
         <div>
           <h3>Integration architecture</h3>
           <p>Third-party systems are hostile by default. Different auth, different error semantics, different ideas of what a valid address is, and documentation describing a version nobody shipped. The work is a data model that survives all of them and an adapter layer that makes the next one cheap. In Karrio that took a new carrier from a quarter of engineering down to days.</p>
-          <p style="margin-top:.7em">Karrio is the third time I have built this kind of layer. Before it, multi-vendor instrument APIs for hardness testing at Clemex, then a vendor-agnostic quantum computing cloud at Resonance. Different industries, same problem.</p>
+          <p style="margin-top:.7em">Karrio is the third time I have built this. Multi-vendor instrument APIs for hardness testing at Clemex, a vendor-agnostic quantum computing cloud at Resonance, then carriers.</p>
         </div>
         <div>
-          <h3>Platform design</h3>
-          <p>Multi-tenancy, rate limiting, orchestration, and one core with REST and GraphQL surfaces over it rather than two codebases pretending to agree. The requirement I hold everything to is that a new market, partner or carrier should be a configuration change rather than a rewrite.</p>
+          <h3>Designing for extension</h3>
+          <p>Anything I build gets used in ways I did not plan for. Karrio's plugin SDK means someone I have never met adds a carrier I have never heard of, and it has to work without me reviewing it. That single constraint settles most of the design upstream of it: how strict the data model can be, what the adapter contract is allowed to promise, where you leave an escape hatch and where you refuse one. Get it wrong and you either block people or spend your life repairing their integrations.</p>
         </div>
         <div>
-          <h3>Open source as a business</h3>
-          <p>I ran Karrio as open core. The hard part was never the code, it was where to draw the line. Draw it wrong and the open edition is a crippled demo nobody trusts, or the commercial tier has nothing anyone will pay for. Getting that boundary right is most of what makes open core work.</p>
+          <h3>Open core, in practice</h3>
+          <p>Karrio runs as open core: an LGPL community edition, and a commercial tier for what an operator needs at scale. The licence was the easy part. The real question is whether someone can build something serious on the open edition without ever talking to you, because if they cannot, no community forms, and a commercial tier with no community upstream of it has nowhere to sell.</p>
         </div>
         <div>
           <h3>Leading the work</h3>
-          <p>Founding engineer, then CTO, then founder. Hiring, setting the technical bar, and owning the decisions about what a team will deliberately not build. Most of what I know about architecture I learned from that last one.</p>
+          <p>I ran my own project for years before I was responsible for anyone else's work. By the time I was setting a technical bar for other people, I had been living with the consequences of my own calls in production for a long time. That is most of what I bring to hiring and to architecture review.</p>
         </div>
       </div>
       <div class="stackline">
@@ -451,7 +447,7 @@ footer {
       <span class="eyebrow mono">Current focus</span>
       <div class="case">
         <h3>Karrio</h3>
-        <p class="sub">Open-source shipping platform. API-first, self-hostable, open core.</p>
+        <p class="sub">Open-source shipping platform. API-first and self-hostable.</p>
 
         <div class="beat">
           <span>Problem</span>
@@ -507,9 +503,9 @@ footer {
         <li>
           <span class="when">2024 &ndash; 2026</span>
           <div>
-            <div class="role">Founding Engineer, then CTO <em>&middot; Teleship</em></div>
+            <div class="role">Founding Engineer <em>&middot; Teleship</em></div>
             <div class="note">
-              <p>First engineer on a cross-border shipping platform, then CTO. Owned the platform architecture, the engineering standards behind it, and the technical bar we hired against.</p>
+              <p>First engineer on a cross-border shipping platform. Owned the platform architecture, the engineering standards behind it, and the technical bar we hired against.</p>
               <p>Cross-border logistics fails on edge cases, so the architecture has to make edge cases cheap. That drove most of what I built and all of what I refused to build. I carried the carrier integration patterns proven in Karrio straight into production there, which cut most of the usual discovery cycle on customs, rating and multi-carrier behaviour.</p>
             </div>
           </div>
@@ -517,7 +513,7 @@ footer {
         <li>
           <span class="when">2022 &ndash; 2024</span>
           <div>
-            <div class="role">Full Stack Developer <em>&middot; Resonance</em></div>
+            <div class="role">Senior Full-Stack Developer <em>&middot; Resonance</em></div>
             <div class="note">
               <p>Owned backend and infrastructure for market intelligence platforms across quantum computing, space, climate and AI, and built prototypes for adjacent businesses the company was exploring.</p>
               <p>Two of those reached MVP: an early system for AI-generated, industry-specific news summaries, and a vendor-agnostic quantum computing cloud platform. Both were built while GPT-3 and GPT-4 were still new.</p>
@@ -528,9 +524,9 @@ footer {
         <li>
           <span class="when">2018 &ndash; 2020</span>
           <div>
-            <div class="role">Full Stack Developer, then DevOps <em>&middot; Clemex Technologies</em></div>
+            <div class="role">Full Stack &amp; Infrastructure Developer <em>&middot; Clemex Technologies</em></div>
             <div class="note">
-              <p>Python backend, plus the CI/CD infrastructure and release management underneath it.</p>
+              <p>Python backend and the CI/CD infrastructure under it, both at the same time for most of my two years there rather than one after the other.</p>
               <p>Sat between the engineering and ML teams and built the integration layer that bundled trained models into releases, with TensorFlow models loaded at runtime for automated hardness testing.</p>
               <p>Designed the hardness testing APIs to speak to instruments from multiple vendors rather than to one. The first time I built an abstraction over hardware nobody had agreed on a standard for.</p>
             </div>
@@ -560,12 +556,11 @@ footer {
     <section id="contact">
       <span class="eyebrow mono">Contact</span>
       <h2>Open to a small number of conversations.</h2>
-      <p>Technical leadership roles, advisory work with teams building logistics or commerce infrastructure, and founders who want to argue about where this goes. Most useful to teams somewhere between three and twelve months into building carrier integrations in-house.</p>
+      <p>Technical leadership roles, and advisory work with teams building logistics or commerce infrastructure. Most useful to teams somewhere between three and twelve months into building carrier integrations in-house.</p>
       <div class="links-grid">
         <a href="mailto:danielk.developer@gmail.com"><span>Email</span><span>&rarr;</span></a>
         <a href="https://github.com/danh91"><span>GitHub</span><span>@danh91</span></a>
         <a href="https://www.linkedin.com/in/daniel-kobina-32093061/"><span>LinkedIn</span><span>&rarr;</span></a>
-        <a href="https://x.com/DanHK91"><span>X</span><span>@DanHK91</span></a>
       </div>
     </section>
 
