@@ -314,6 +314,19 @@ main section > p:last-child { margin-bottom: 0; }
 }
 .empty p { margin: 0; color: var(--ink-soft); font-size: .96rem; }
 
+/* ---------- projects ---------- */
+
+.projects { list-style: none; padding: 0; margin: 10px 0 0; max-width: 66ch; }
+.projects li { padding: 15px 0; border-bottom: 1px solid var(--rule); }
+.projects .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.projects a { color: var(--ink); font-weight: 500; }
+.projects a:hover { color: var(--accent); }
+.projects .repo {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px; color: var(--ink-dim); white-space: nowrap;
+}
+.projects p { margin: 5px 0 0; color: var(--ink-soft); font-size: .93rem; }
+
 /* ---------- contact ---------- */
 
 .links-grid {
@@ -393,7 +406,8 @@ footer {
         <li><a href="#work-i-do">What I do</a></li>
         <li><a href="#karrio">Karrio</a></li>
         <li><a href="#work">Work</a></li>
-        <li><a href="#writing">Writing</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="/writing/">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -545,11 +559,48 @@ footer {
       </ul>
     </section>
 
+    <section id="projects">
+      <span class="eyebrow mono">Projects</span>
+      <h2>Open source I am building now.</h2>
+      <ul class="projects">
+        <li>
+          <div class="top">
+            <a href="https://github.com/ebenlab/openshipping.tech">Open Logistics Specification</a>
+            <span class="repo">ebenlab/openshipping.tech</span>
+          </div>
+          <p>An open, standardized shipping and logistics spec for agents and developers. The interface agreement the carrier world never reached, written down one object at a time.</p>
+        </li>
+        <li>
+          <div class="top">
+            <a href="https://github.com/ebenlab/dan">/dan</a>
+            <span class="repo">ebenlab/dan</span>
+          </div>
+          <p>An installable agent skill built around how I actually work: evidence first, narrow reviewable changes, and clear permission boundaries.</p>
+        </li>
+        <li>
+          <div class="top">
+            <a href="https://github.com/ebenlab/tern">Tern</a>
+            <span class="repo">ebenlab/tern</span>
+          </div>
+          <p>A local-first operating system and fleet control plane for human-agent systems.</p>
+        </li>
+        <li>
+          <div class="top">
+            <a href="https://github.com/ebenlab/byakugan">Byakugan</a>
+            <span class="repo">ebenlab/byakugan</span>
+          </div>
+          <p>An architecture record server. ADRs and design decisions in plain HTML, served as a searchable dossier from one binary.</p>
+        </li>
+      </ul>
+    </section>
+
     <section id="writing">
       <span class="eyebrow mono">Writing</span>
       <h2>Notes</h2>
-      <div class="empty">
-        <p>Nothing published here yet. What I intend to write about: carrier integration as an architectural problem, where to draw the line in an open-core business, and what happens to logistics when software is the operator rather than the interface.</p>
+      <p>Carrier integration as an architectural problem, where to draw the line in an open-core business, and what happens to logistics when software is the operator rather than the interface.</p>
+      <div class="links-grid">
+        <a href="/writing/"><span>All writing</span><span>&rarr;</span></a>
+        <a href="https://theseus.dankobina.com"><span>Theseus</span><span>newsletter</span></a>
       </div>
     </section>
 
@@ -560,6 +611,7 @@ footer {
       <div class="links-grid">
         <a href="mailto:danielk.developer@gmail.com"><span>Email</span><span>&rarr;</span></a>
         <a href="https://github.com/danh91"><span>GitHub</span><span>@danh91</span></a>
+        <a href="https://github.com/ebenlab"><span>Eben Labs</span><span>@ebenlab</span></a>
         <a href="https://www.linkedin.com/in/daniel-kobina-32093061/"><span>LinkedIn</span><span>&rarr;</span></a>
       </div>
     </section>
