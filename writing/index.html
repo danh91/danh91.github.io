@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing | Daniel Kobina</title>
+<meta name="description" content="Notes on carrier integration, open-core businesses, and what happens to logistics when software becomes the operator.">
+<link rel="canonical" href="https://dankobina.com/writing/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dankobina.com/writing/">
+<meta property="og:title" content="Writing | Daniel Kobina">
+<meta property="og:description" content="Notes on carrier integration, open-core businesses, and what happens to logistics when software becomes the operator.">
+<meta property="og:image" content="https://github.com/danh91.png?size=460">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231338E6'/%3E%3Cpath d='M28 68V32h16c11 0 18 7 18 18s-7 18-18 18H28z' fill='%23fff'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
+
+<style>
+:root {
+  --paper:    #F3F4F1;
+  --surface:  #FBFBFA;
+  --sunken:   #ECEEEA;
+  --ink:      #12141A;
+  --ink-soft: #4A5058;
+  --ink-dim:  #868D96;
+  --rule:     #D9DCD8;
+  --rule-firm:#B7BCB8;
+  --accent:   #1338E6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:    #0C0E12;
+    --surface:  #14171D;
+    --sunken:   #11141A;
+    --ink:      #E9ECEF;
+    --ink-soft: #A0A7B0;
+    --ink-dim:  #6C737C;
+    --rule:     #232830;
+    --rule-firm:#363D47;
+    --accent:   #7C95FF;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16.5px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+a:hover { border-bottom-color: currentColor; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+/* ---------- shell ---------- */
+
+.shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 236px 1fr;
+  gap: 0 72px;
+  align-items: start;
+}
+
+/* ---------- left rail ---------- */
+
+.rail {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 56px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mark { display: flex; align-items: center; gap: 13px; }
+.mark img {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  display: block;
+  background: var(--rule);
+}
+.mark .who { display: flex; flex-direction: column; line-height: 1.25; }
+.mark .who b {
+  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -.015em;
+}
+.mark .who span { color: var(--ink-dim); font-size: .8rem; }
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-size: .82rem;
+  line-height: 1.4;
+}
+.dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+  margin-top: 1px;
+}
+
+nav { position: relative; }
+nav::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px; bottom: 10px;
+  width: 1px;
+  background: var(--rule);
+}
+nav ul { list-style: none; margin: 0; padding: 0; }
+nav li { position: relative; }
+nav a {
+  display: block;
+  padding: 7px 0 7px 22px;
+  color: var(--ink-soft);
+  border-bottom: none;
+  font-size: .88rem;
+}
+nav a::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%;
+  width: 11px;
+  height: 1px;
+  background: var(--rule-firm);
+  transition: width .18s ease, background-color .18s ease;
+}
+nav a:hover { color: var(--ink); }
+nav a:hover::before { width: 16px; background: var(--accent); }
+
+.rail .foot { margin-top: auto; color: var(--ink-dim); }
+
+/* ---------- content ---------- */
+
+main { padding: 56px 0 140px; min-width: 0; }
+
+section { padding: 0 0 80px; scroll-margin-top: 40px; }
+
+.eyebrow { color: var(--ink-dim); display: block; margin-bottom: 20px; }
+
+h1 {
+  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.3rem, 5.2vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -.032em;
+  margin: 0 0 26px;
+  max-width: 19ch;
+  text-wrap: balance;
+}
+
+h2 {
+  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.32rem;
+  letter-spacing: -.018em;
+  margin: 0 0 18px;
+}
+
+p { margin: 0 0 1.05em; max-width: 64ch; }
+p.lead { font-size: 1.13rem; color: var(--ink-soft); max-width: 58ch; }
+main section > p:last-child { margin-bottom: 0; }
+
+.hero { padding-top: 8px; }
+
+.hero .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 30px;
+}
+.tags span {
+  border: 1px solid var(--rule-firm);
+  border-radius: 100px;
+  padding: 5px 13px;
+  color: var(--ink-soft);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .06em;
+}
+
+/* ---------- capabilities ---------- */
+
+.caps { display: grid; gap: 0; max-width: 68ch; }
+.caps > div {
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+}
+.caps > div:last-child { border-bottom: 1px solid var(--rule); }
+.caps h3 {
+  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -.012em;
+  margin: 0 0 8px;
+}
+.caps p { margin: 0; font-size: .97rem; color: var(--ink-soft); }
+
+.stackline {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  color: var(--ink-dim);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  max-width: 68ch;
+}
+.stackline i { font-style: normal; }
+.stackline i:not(:last-child)::after { content: " \00B7"; color: var(--rule-firm); }
+
+/* ---------- case study ---------- */
+
+.case {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 30px 32px;
+  max-width: 68ch;
+}
+.case > h3 {
+  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.022em;
+  margin: 0 0 4px;
+}
+.case .sub { color: var(--ink-dim); font-size: .86rem; margin: 0 0 26px; }
+
+.beat { display: grid; grid-template-columns: 92px 1fr; gap: 0 24px; padding: 18px 0; border-top: 1px solid var(--rule); }
+.beat:first-of-type { border-top: none; padding-top: 0; }
+.beat > span {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding-top: 5px;
+}
+.beat p { margin: 0; font-size: .96rem; max-width: 56ch; }
+
+.case .links {
+  display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--rule);
+  font-size: .9rem;
+}
+.case img.badge { height: 20px; vertical-align: middle; display: block; }
+
+/* ---------- work list ---------- */
+
+.work { list-style: none; margin: 0; padding: 0; max-width: 68ch; }
+.work li {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 4px 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+}
+.work li:last-child { border-bottom: 1px solid var(--rule); }
+.work .when {
+  color: var(--ink-dim);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  letter-spacing: .04em;
+  font-variant-numeric: tabular-nums;
+  padding-top: 5px;
+}
+.work .role { font-weight: 500; margin-bottom: 6px; }
+.work .role em { font-style: normal; color: var(--ink-dim); font-weight: 400; }
+.work .note { color: var(--ink-soft); font-size: .95rem; }
+.work .note p { margin: 0 0 .7em; max-width: 58ch; }
+.work .note p:last-child { margin-bottom: 0; }
+
+/* ---------- writing ---------- */
+
+.empty {
+  border: 1px dashed var(--rule-firm);
+  border-radius: 4px;
+  padding: 24px 26px;
+  max-width: 64ch;
+  background: var(--sunken);
+}
+.empty p { margin: 0; color: var(--ink-soft); font-size: .96rem; }
+
+/* ---------- contact ---------- */
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 2px 28px;
+  max-width: 64ch;
+  margin-top: 4px;
+}
+.links-grid a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+}
+.links-grid a:hover { color: var(--accent); }
+.links-grid a span:last-child {
+  color: var(--ink-dim);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+}
+.links-grid a:hover span:last-child { color: var(--accent); }
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 20px;
+  color: var(--ink-dim);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 880px) {
+  .shell { grid-template-columns: 1fr; gap: 0; padding: 0 22px; }
+  .rail {
+    position: static;
+    height: auto;
+    padding: 34px 0 26px;
+    border-bottom: 1px solid var(--rule);
+    gap: 20px;
+  }
+  .rail nav, .rail .foot { display: none; }
+  main { padding: 40px 0 90px; }
+  section { padding-bottom: 60px; }
+  .work li { grid-template-columns: 1fr; gap: 6px; }
+  .work .when { padding-top: 0; }
+  .beat { grid-template-columns: 1fr; gap: 6px; }
+  .beat > span { padding-top: 0; }
+  .case { padding: 24px 20px; }
+}
+
+/* ---------- writing index ---------- */
+.posts { list-style: none; padding: 0; margin: 10px 0 0; max-width: 68ch; }
+.posts li {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 0 24px;
+  align-items: baseline;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.posts .when {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+  white-space: nowrap;
+}
+.posts a, .posts .title { color: var(--ink); font-weight: 500; }
+.posts a:hover { color: var(--accent); }
+.posts .title { color: var(--ink-soft); }
+.posts p { margin: 5px 0 0; color: var(--ink-soft); font-size: .93rem; }
+.backlink { display: inline-block; margin-bottom: 26px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--ink-dim); }
+.backlink:hover { color: var(--accent); }
+.elsewhere { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--rule); max-width: 68ch; }
+.elsewhere h3 { font-size: 1rem; margin: 0 0 6px; }
+.elsewhere p { margin: 0; color: var(--ink-soft); font-size: .96rem; }
+@media (max-width: 880px) {
+  .posts li { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <aside class="rail">
+    <div class="mark">
+      <img src="https://github.com/danh91.png?size=140" alt="" width="46" height="46" loading="lazy">
+      <span class="who">
+        <b>Daniel Kobina</b>
+        <span>Victoria, BC</span>
+      </span>
+    </div>
+
+    <p class="status"><span class="dot" aria-hidden="true"></span> Building Karrio inside JTL-Software</p>
+
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="/#now">Now</a></li>
+        <li><a href="/#work-i-do">What I do</a></li>
+        <li><a href="/#karrio">Karrio</a></li>
+        <li><a href="/#work">Work</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/writing/" aria-current="page">Writing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="foot mono">dankobina.com</div>
+  </aside>
+
+  <main>
+
+    <a class="backlink" href="/">&larr; dankobina.com</a>
+
+    <section class="hero">
+      <h1>Writing</h1>
+      <p class="lead">Notes on the things I keep running into. Carrier integration as an architectural problem, where to draw the line in an open-core business, and what happens to logistics when software is the operator rather than the interface.</p>
+    </section>
+
+    <section id="posts">
+      <ul class="posts">
+        <li>
+          <span class="when">Forthcoming</span>
+          <div>
+            <span class="title">Modelling a shipment so the next carrier does not break it</span>
+            <p>The canonical data model, what belongs behind a plugin boundary, and how you find out you got it wrong.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Forthcoming</span>
+          <div>
+            <span class="title">Where to draw the line in open core</span>
+            <p>Six years running one, including the boundary decisions I reversed.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Forthcoming</span>
+          <div>
+            <span class="title">When software is the operator, not the interface</span>
+            <p>Logistics systems assume a person decides and the software records. Remove the person and most interfaces are modelled wrong.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <div class="elsewhere">
+      <h3>Elsewhere</h3>
+      <p>Shipping and logistics engineering goes out through <a href="https://theseus.dankobina.com">Theseus</a>, a separate publication.</p>
+    </div>
+
+    <footer>
+      <span class="mono">Daniel Kobina</span>
+      <span class="mono">Victoria, British Columbia</span>
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
