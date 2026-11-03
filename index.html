@@ -233,17 +233,7 @@ main section > p:last-child { margin-bottom: 0; }
 }
 .case .sub { color: var(--ink-dim); font-size: .86rem; margin: 0 0 26px; }
 
-.beat { display: grid; grid-template-columns: 92px 1fr; gap: 0 24px; padding: 18px 0; border-top: 1px solid var(--rule); }
-.beat:first-of-type { border-top: none; padding-top: 0; }
-.beat > span {
-  color: var(--accent);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 10px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  padding-top: 5px;
-}
-.beat p { margin: 0; font-size: .96rem; max-width: 56ch; }
+.case .body { margin: 0; font-size: .96rem; max-width: 56ch; }
 
 .case .links {
   display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
@@ -353,8 +343,6 @@ footer {
   section { padding-bottom: 60px; }
   .work li { grid-template-columns: 1fr; gap: 6px; }
   .work .when { padding-top: 0; }
-  .beat { grid-template-columns: 1fr; gap: 6px; }
-  .beat > span { padding-top: 0; }
   .case { padding: 24px 20px; }
 }
 </style>
@@ -416,15 +404,7 @@ footer {
         <h3>Karrio</h3>
         <p class="sub">Open-source shipping platform. API-first, self-hostable, and running in production for platforms and logistics teams.</p>
 
-        <div class="beat">
-          <span>Problem</span>
-          <p>Every company that ships a physical product rebuilds the same carrier integration layer. UPS, DHL, FedEx, USPS, Canada Post and the regional carriers each expose a different API, a different rate model, a different label format and a different idea of what a valid address is. Teams lose months to it, then maintain it forever, and none of that work differentiates them.</p>
-        </div>
-
-        <div class="beat">
-          <span>Boundary</span>
-          <p>The community edition is LGPL and useful on its own, self-hostable with no vendor in the path. The commercial tier covers multi-tenancy, rate limiting and orchestration: what an operator needs at scale and a single developer does not. That line is the business, and it is the decision I spent the most time on.</p>
-        </div>
+        <p class="body">Every company that ships a physical product rebuilds the same carrier integration layer. UPS, DHL, FedEx, USPS, Canada Post and the regional carriers each expose a different API, a different rate model, a different label format and a different idea of what a valid address is. Teams lose months to it, then maintain it forever, and none of that work differentiates them.</p>
 
         <div class="links">
           <a href="https://github.com/karrioapi/karrio">Source</a>
