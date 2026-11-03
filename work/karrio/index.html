@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building Karrio as a platform | Daniel Kobina</title>
+  <meta name="description" content="Why Daniel Kobina chose to build Karrio as open shipping infrastructure for other teams, and how that decision shaped its API and developer tools.">
+  <link rel="canonical" href="https://dankobina.com/work/karrio/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dankobina.com/work/karrio/">
+  <meta property="og:title" content="Building Karrio as a platform | Daniel Kobina">
+  <meta property="og:description" content="Why Daniel Kobina chose to build Karrio as open shipping infrastructure for other teams, and how that decision shaped its API and developer tools.">
+  <meta property="og:image" content="https://github.com/danh91.png?size=460">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231338E6'/%3E%3Cpath d='M28 68V32h16c11 0 18 7 18 18s-7 18-18 18H28z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="domain">dankobina.com</div>
+      <nav aria-label="Main navigation">
+      <a href="/">About</a>
+      <a href="/writing/">Writing</a>
+      <a href="/work/" aria-current="location">Work</a>
+      </nav>
+    </aside>
+    <main id="content">
+<a class="back-link" href="/work/">← Work</a>
+<article class="case-study">
+  <h1>Building Karrio as a platform</h1>
+  <p class="deck">Open shipping infrastructure that other teams can build on.</p>
+  <div class="case-meta">Founder &amp; CEO, 2020–2026<br>Currently architect and product engineer at JTL-Software</div>
+  <p>I started Karrio as an open-source shipping platform. The company followed in 2020.</p>
+  <h2>The product decision</h2>
+  <p>I chose to design Karrio as a platform. The alternative was a conventional shipping aggregator or multi-carrier SaaS product. I designed the product for teams building shipping into their own software.</p>
+  <p>That meant making shipping programmable and giving integrators tools to understand what their integration was doing. Stripe influenced the developer experience and the way API activity is presented.</p>
+  <p>The developer tools include API logs with request and response details. A developer can inspect an individual transaction while working through an integration.</p>
+  <h2>Where the differences go</h2>
+  <p>A rate request enters Karrio through a shared model. A carrier plugin translates the request into that carrier’s schema, then maps the response back into rates and messages.</p>
+  <p>The integration handles carrier-specific service codes and options. For an application using Karrio, the request and response follow the same model across carriers.</p>
+  <figure class="architecture">
+    <ol class="request-path" aria-label="Simplified rate request path">
+      <li><code>RateRequest</code><span>Karrio model</span></li>
+      <li class="plugin">Carrier plugin<span>Translate request and response</span></li>
+      <li>Carrier API<span>Carrier-specific schema</span></li>
+    </ol>
+    <figcaption>A simplified rating path. The plugin maps the response back into Karrio’s model.</figcaption>
+  </figure>
+  <p class="caption">Implementation reference: <a href="https://www.karrio.io/docs/developing/plugin-development">Karrio’s plugin development guide</a>.</p>
+  <h2>A platform other people can extend</h2>
+  <blockquote><p>The constraint that decides most of the design is whether someone I have never met can extend it without me in the loop.</p></blockquote>
+  <p>Carrier plugins follow a documented structure. A new integration supplies its translation and connection logic through the plugin interface.</p>
+  <p>That gives another developer a defined place to add a carrier. The shared platform can remain useful as the set of integrations changes.</p>
+  <h2>The company around it</h2>
+  <p>Karrio has an LGPL community edition and a commercial tier. JTL-Software acquired Karrio in 2025, and it now provides shipping inside JTL’s commercial stack.</p>
+  <div class="case-links"><a href="https://github.com/karrioapi/karrio">Read the source →</a><a href="https://karrio.io/">Karrio →</a></div>
+</article>
+    </main>
+    <footer class="site-footer">
+      <p>Daniel Kobina · Victoria, British Columbia</p>
+      <div class="footer-links">
+        <a href="mailto:danielk.developer@gmail.com">Email</a>
+        <a href="https://github.com/danh91">GitHub</a>
+        <a href="https://www.linkedin.com/in/daniel-kobina-32093061/">LinkedIn</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
