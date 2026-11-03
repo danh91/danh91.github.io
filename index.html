@@ -211,35 +211,9 @@ main section > p:last-child { margin-bottom: 0; }
   letter-spacing: .06em;
 }
 
-/* ---------- capabilities ---------- */
+/* ---------- said ---------- */
 
-.caps { display: grid; gap: 0; max-width: 68ch; }
-.caps > div {
-  padding: 24px 0;
-  border-top: 1px solid var(--rule);
-}
-.caps > div:last-child { border-bottom: 1px solid var(--rule); }
-.caps h3 {
-  font-family: "Familjen Grotesk", system-ui, sans-serif;
-  font-size: 1.02rem;
-  font-weight: 600;
-  letter-spacing: -.012em;
-  margin: 0 0 8px;
-}
-.caps p { margin: 0; font-size: .97rem; color: var(--ink-soft); }
-
-.stackline {
-  margin-top: 26px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  color: var(--ink-dim);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11.5px;
-  max-width: 68ch;
-}
-.stackline i { font-style: normal; }
-.stackline i:not(:last-child)::after { content: " \00B7"; color: var(--rule-firm); }
+.said { max-width: 68ch; margin: 10px 0 0; color: var(--ink-soft); font-size: 1rem; }
 
 /* ---------- case study ---------- */
 
@@ -433,35 +407,14 @@ footer {
 
     <section id="work-i-do">
       <span class="eyebrow mono">What I do</span>
-      <div class="caps">
-        <div>
-          <h3>Integration architecture</h3>
-          <p>Third-party systems are hostile by default. Different auth, different error semantics, different ideas of what a valid address is, and documentation describing a version nobody shipped. The work is a data model that survives all of them and an adapter layer that makes the next one cheap. In Karrio that took a new carrier from a quarter of engineering down to days.</p>
-          <p style="margin-top:.7em">Karrio is the third time I have built this. Multi-vendor instrument APIs for hardness testing at Clemex, a vendor-agnostic quantum computing cloud at Resonance, then carriers.</p>
-        </div>
-        <div>
-          <h3>Designing for extension</h3>
-          <p>Anything I build gets used in ways I did not plan for. Karrio's plugin SDK means someone I have never met adds a carrier I have never heard of, and it has to work without me reviewing it. That single constraint settles most of the design upstream of it: how strict the data model can be, what the adapter contract is allowed to promise, where you leave an escape hatch and where you refuse one. Get it wrong and you either block people or spend your life repairing their integrations.</p>
-        </div>
-        <div>
-          <h3>Open core, in practice</h3>
-          <p>Karrio runs as open core: an LGPL community edition, and a commercial tier for what an operator needs at scale. The licence was the easy part. The real question is whether someone can build something serious on the open edition without ever talking to you, because if they cannot, no community forms, and a commercial tier with no community upstream of it has nowhere to sell.</p>
-        </div>
-        <div>
-          <h3>Leading the work</h3>
-          <p>I ran my own project for years before I was responsible for anyone else's work. By the time I was setting a technical bar for other people, I had been living with the consequences of my own calls in production for a long time. That is most of what I bring to hiring and to architecture review.</p>
-        </div>
-      </div>
-      <div class="stackline">
-        <i>Python</i><i>Django</i><i>TypeScript</i><i>NestJS</i><i>PostgreSQL</i><i>Docker</i><i>GraphQL</i><i>REST</i><i>AWS</i>
-      </div>
+      <p class="said">Third-party systems are hostile by default. Different auth, different error semantics, different ideas of what a valid address is, and documentation describing a version nobody shipped. The work is a data model that survives all of them and an adapter layer that makes the next one cheap. Karrio is the third time I have built that, and the first two had nothing to do with shipping. The constraint that decides most of the design is whether someone I have never met can extend it without me in the loop.</p>
     </section>
 
     <section id="karrio">
       <span class="eyebrow mono">Current focus</span>
       <div class="case">
         <h3>Karrio</h3>
-        <p class="sub">Open-source shipping platform. API-first and self-hostable.</p>
+        <p class="sub">Open-source shipping platform. API-first, self-hostable, and running in production for platforms and logistics teams.</p>
 
         <div class="beat">
           <span>Problem</span>
@@ -469,18 +422,8 @@ footer {
         </div>
 
         <div class="beat">
-          <span>Decision</span>
-          <p>One carrier-agnostic data model, with every carrier pushed behind a plugin SDK rather than into a switch statement that grows without end. Rating, labels, tracking, customs documents and fulfillment orchestration sit behind a single interface, with REST and GraphQL generated over the same core. Adding a carrier became something a team outside the project could do themselves.</p>
-        </div>
-
-        <div class="beat">
           <span>Boundary</span>
           <p>The community edition is LGPL and useful on its own, self-hostable with no vendor in the path. The commercial tier covers multi-tenancy, rate limiting and orchestration: what an operator needs at scale and a single developer does not. That line is the business, and it is the decision I spent the most time on.</p>
-        </div>
-
-        <div class="beat">
-          <span>Outcome</span>
-          <p>Production infrastructure for platforms, retailers and logistics teams, with a contributor community extending it into markets I will never see. In 2025 Karrio and I joined JTL-Software, where it runs as the shipping layer inside an established European e-commerce software business.</p>
         </div>
 
         <div class="links">
@@ -583,7 +526,7 @@ footer {
     <section id="writing">
       <span class="eyebrow mono">Writing</span>
       <h2>Notes</h2>
-      <p>Carrier integration as an architectural problem, where to draw the line in an open-core business, and what happens to logistics when software is the operator rather than the interface.</p>
+      <p>Some of it is about craft and what holding a bar actually costs. Some of it is architecture, written out properly rather than summarised.</p>
       <div class="links-grid">
         <a href="/writing/"><span>All writing</span><span>&rarr;</span></a>
         <a href="https://theseus.dankobina.com"><span>Theseus</span><span>newsletter</span></a>
